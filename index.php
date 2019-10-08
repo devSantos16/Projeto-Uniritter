@@ -22,13 +22,12 @@
   </head>
 
   <body class="bg-light">
+<!--   PEGA OS DADOS DO ALUNO (DOCUMENTAÇÃO-->
     <?php
     session_start();
     include_once("dao/conexaoBanco.php");
-    // $result_pessoa =  "INSERT INTO aluno (matricula, nome, curso, campus, periodo, nomeResponsavel, cpfResponsavel, cpfAluno, semestre, status) VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $result_aluno = "SELECT * FROM aluno WHERE matricula = 201820000 "; // Pega o Banco
     $resultado_aluno = mysqli_query($conn, $result_aluno);
-
 
     while($row_aluno = mysqli_fetch_assoc($resultado_aluno)){
         $nome = $row_aluno['nome'];
@@ -36,12 +35,46 @@
         $rg =  $row_aluno['rg'];
         $cpfAluno = $row_aluno['cpf_aluno'];
         $comprovante = $row_aluno['comprovante'];
-
     }
-    // $result_usuarios = "SELECT * FROM ritter";
-    // $resultado_usuarios = mysqli_query($conn, $result_usuarios);
 
+//    MENSALIDADES
+    $result_mensalidade = "SELECT * FROM mensalidade WHERE matricula_aluno = 201820000 "; // Pega o Banco
+    $resultado_mensalidade = mysqli_query($conn, $result_mensalidade);
+
+    while($row_mensalidade = mysqli_fetch_assoc($resultado_mensalidade)){
+        $descricao = $row_mensalidade['descricao'];
+        $valor = $row_mensalidade['valor'];
+        $status = $row_mensalidade['status'];
+    }
+
+    //    MENSALIDADES
+    $result_mensalidade = "SELECT * FROM mensalidade WHERE idMensalidade = 1 "; // Pega o Banco
+    $resultado_mensalidade = mysqli_query($conn, $result_mensalidade);
+
+    while($row_mensalidade = mysqli_fetch_assoc($resultado_mensalidade)){
+        $nome_mensalidade_1 = $row_mensalidade['nome'];
+    }
+
+//    MENSALIDADES
+    $result_mensalidade = "SELECT * FROM mensalidade WHERE idMensalidade = 2 "; // Pega o Banco
+    $resultado_mensalidade = mysqli_query($conn, $result_mensalidade);
+
+    while($row_mensalidade = mysqli_fetch_assoc($resultado_mensalidade)){
+        $nome_mensalidade_2 = $row_mensalidade['nome'];
+    }
+
+
+    //    MENSALIDADES
+    $result_mensalidade = "SELECT * FROM mensalidade WHERE idMensalidade = 3 "; // Pega o Banco
+    $resultado_mensalidade = mysqli_query($conn, $result_mensalidade);
+
+    while($row_mensalidade = mysqli_fetch_assoc($resultado_mensalidade)){
+        $nome_mensalidade_3 = $row_mensalidade['nome'];
+    }
+
+    $valorTotal = $valor *3;
     ?>
+<!--   FIM DOS DADOS DO ALUNO (DOCUMENTAÇÃO-->
 
     <div  class="container">
       <div class="py-5 text-center" >
@@ -125,24 +158,23 @@
                           <ul class="list-group mb-3">
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>
-                                  <h6 style="margin-left:30px;" class="my-0">Janeiro</h6>
-                                  <small style="margin-left:30px;" class="text-muted">Essa parcela foi liquidada na data 05/01/19 no valor de R$ 1.800</small>
+                                  <input style="margin-left:1px; margin-top:10px;" type="checkbox" class="form-check-input" id="exampleCheck1">
+                                  <h6 style="margin-left:30px;" class="my-0"> <?php echo $nome_mensalidade_1 ?> </h6>
+                                  <small style="margin-left:30px;" class="text-muted"> <?php echo $descricao?> </small>
                                 </div>
                                 <div class="py-1">
-                                      <button type="button" class="btn btn-success btn-sm">LIQUIDADO</button>
-                                  </div>
-
-                                <!-- <span class="text-muted">R$8</span> -->
+                                    <button type="button" class="btn btn-danger btn-sm"> <?php echo $status ?></button>
+                                </div>
                               </li>
                           <li class="list-group-item d-flex justify-content-between lh-condensed">
                               <div>
                                   <input style="margin-left:1px; margin-top:10px;" type="checkbox" class="form-check-input" id="exampleCheck1">
-                                  <h6 style="margin-left:30px;" class="my-0">Fevereiro</h6>
-                                  <small style="margin-left:30px;" class="text-muted">Essa parcela está vencida desde a data 05/02/19 no valor de R$ 1.800</small>
+                                  <h6 style="margin-left:30px;" class="my-0"><?php echo $nome_mensalidade_2 ?></h6>
+                                  <small style="margin-left:30px;" class="text-muted"><?php echo $descricao?></small>
                                 </div>
                             <div>
                                <div class= "py-1">
-                                  <button type="button" class="btn btn-danger btn-sm">EM ATRASO</button>
+                                  <button type="button" class="btn btn-danger btn-sm"><?php echo $status ?></button>
                                </div>
 
                             </div>
@@ -151,12 +183,12 @@
                           <li class="list-group-item d-flex justify-content-between lh-condensed">
                               <div>
                                 <input style="margin-left:1px; margin-top:10px;" type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <h6 style="margin-left:30px;" class="my-0">Março</h6>
-                                <small style="margin-left:30px;" class="text-muted">Essa parcela está vencida desde a data 05/03/19 no valor de R$ 1.800</small>
+                                <h6 style="margin-left:30px;" class="my-0"><?php echo $nome_mensalidade_3 ?></h6>
+                                <small style="margin-left:30px;" class="text-muted"><?php echo $descricao?></small>
                               </div>
                               <div>
                                  <div class= "py-1">
-                                    <button type="button" class="btn btn-danger btn-sm">EM ATRASO</button>
+                                    <button type="button" class="btn btn-danger btn-sm"><?php echo $status ?></button>
                                  </div>
 
                               </div>
@@ -165,7 +197,7 @@
                           <br>
                           <li class="list-group-item d-flex justify-content-between">
                             <span class="py-1">Total (BRL)</span>
-                            <span class="py-1">R$ 3.600 </span>
+                            <span class="py-1">R$ <?php echo $valorTotal?>,00 </span>
                           </li>
                         </div>
                 </div>
