@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
   <head>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -21,6 +22,22 @@
   </head>
 
   <body class="bg-light">
+    <?php
+    session_start();  
+    include_once("dao/conexaoBanco.php");
+    // $result_pessoa =  "INSERT INTO aluno (matricula, nome, curso, campus, periodo, nomeResponsavel, cpfResponsavel, cpfAluno, semestre, status) VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $result_aluno = "SELECT * FROM aluno"; // Pega o Banco
+    $resultado_aluno = mysqli_query($conn, $result_aluno);
+
+
+    while($row_aluno = mysqli_fetch_assoc($resultado_aluno)){
+      $matricula =  $row_aluno['matricula'];
+      
+    }
+    // $result_usuarios = "SELECT * FROM ritter";
+    // $resultado_usuarios = mysqli_query($conn, $result_usuarios);
+
+    ?>
 
     <div  class="container">
       <div class="py-5 text-center" >
