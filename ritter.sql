@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08-Out-2019 às 18:27
+-- Tempo de geração: 08-Out-2019 às 21:05
 -- Versão do servidor: 10.4.6-MariaDB
 -- versão do PHP: 7.1.32
 
@@ -37,7 +37,9 @@ CREATE TABLE `aluno` (
   `nome_responsavel` varchar(50) NOT NULL,
   `cpf_responsavel` double NOT NULL,
   `cpf_aluno` double NOT NULL,
+  `rg` int(15) NOT NULL,
   `semestre` int(11) NOT NULL,
+  `comprovante` varchar(20) NOT NULL,
   `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -45,8 +47,9 @@ CREATE TABLE `aluno` (
 -- Extraindo dados da tabela `aluno`
 --
 
-INSERT INTO `aluno` (`matricula`, `nome`, `curso`, `campus`, `periodo`, `nome_responsavel`, `cpf_responsavel`, `cpf_aluno`, `semestre`, `status`) VALUES
-(1, 'teste', 'ADS', 'fapa', 'noite', 'teste', 10, 10, 1, 'liquidado');
+INSERT INTO `aluno` (`matricula`, `nome`, `curso`, `campus`, `periodo`, `nome_responsavel`, `cpf_responsavel`, `cpf_aluno`, `rg`, `semestre`, `comprovante`, `status`) VALUES
+(201820000, 'Em Santos Henzel', 'Analise e Desenvolvimento  de Sistemas', 'Campus Fapa', 'Noturno', 'Caio Castro', 8485254082, 848485254082, 464664621, 1, 'Possui Comprovante', 'liquidado'),
+(201820001, 'henrique antunes', 'ADS', 'FAPA', 'noturno', 'caio castro', 9494194182, 9494194182, 2147483647, 2, 'não possui', 'EM DÍVIDA');
 
 -- --------------------------------------------------------
 
@@ -57,7 +60,7 @@ INSERT INTO `aluno` (`matricula`, `nome`, `curso`, `campus`, `periodo`, `nome_re
 CREATE TABLE `mensalidade` (
   `idMensalidade` int(11) NOT NULL,
   `descricao` varchar(50) NOT NULL,
-  `vencimento` date NOT NULL,
+  `vencimento` varchar(20) NOT NULL,
   `valor` double NOT NULL,
   `valor_pago` double NOT NULL,
   `data_pagamento` date NOT NULL,
@@ -107,7 +110,7 @@ ALTER TABLE `taxas`
 -- AUTO_INCREMENT de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `matricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `matricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201820002;
 
 --
 -- AUTO_INCREMENT de tabela `mensalidade`
