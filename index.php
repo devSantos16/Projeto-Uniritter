@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
   <head>
-    
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -15,7 +15,7 @@
 
     <!-- Estilos customizados para esse template -->
     <link href="css/form-validation.css" rel="stylesheet">
-    <!-- Não apagar -- Jquery -->
+    <!-- Não apagar Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
@@ -23,7 +23,7 @@
 
   <body class="bg-light">
     <?php
-    session_start();  
+    session_start();
     include_once("dao/conexaoBanco.php");
     // $result_pessoa =  "INSERT INTO aluno (matricula, nome, curso, campus, periodo, nomeResponsavel, cpfResponsavel, cpfAluno, semestre, status) VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $result_aluno = "SELECT * FROM aluno"; // Pega o Banco
@@ -32,7 +32,7 @@
 
     while($row_aluno = mysqli_fetch_assoc($resultado_aluno)){
       $matricula =  $row_aluno['matricula'];
-      
+
     }
     // $result_usuarios = "SELECT * FROM ritter";
     // $resultado_usuarios = mysqli_query($conn, $result_usuarios);
@@ -63,40 +63,114 @@
             <span class="badge badge-secondary badge-pill">3</span>
           </h4>
           <ul class="list-group mb-3">
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <?php
+              echo "<li class=\"list-group-item d-flex justify-content-between lh-condensed\">
               <div>
-                <h6 class="my-0">Mensalidade</h6>
-                <small class="text-muted">Clique no botão ao lado para obter mais informações sobre as mensalidades EM ATRASO</small>
+                <h6 class=\"my-0\">Mensalidade</h6>
+                <small class=\"text-muted\">Clique no botão ao lado para obter mais informações sobre as mensalidades EM ATRASO</small>
               </div>
               <div>
-                 <div class= "py-1">
-                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalMensalidade">Detalhes</button>
+                 <div class= \"py-1\">
+                    <button type=\"button\" class=\"btn btn-danger btn-sm\" data-toggle=\"modal\" data-target=\"#modalMensalidade\">Detalhes</button>
                  </div>
-
               </div>
-
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
+            </li>";
+              ?>
+              <?php
+              echo "<li class=\"list-group-item d-flex justify-content-between lh-condensed\">
               <div>
-                <h6 class="my-0">Taxas</h6>
-                <small class="text-muted">Clique no botão ao lado para obter mais informações sobre as taxar EM ATRASO</small>
+                <h6 class=\"my-0\">Taxas</h6>
+                <small class=\"text-muted\">Clique no botão ao lado para obter mais informações sobre as taxar EM ATRASO</small>
               </div>
-              <div class="py-1">
-                  <button type="button" class="btn btn-warning btn-sm" data-target="#modalTaxas" data-toggle="modal">Detalhes</button>
+              <div class=\"py-1\">
+                  <button type=\"button\" class=\"btn btn-warning btn-sm\" data-target=\"#modalTaxas\" data-toggle=\"modal\">Detalhes</button>
               </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
+            </li>";
+              ?>
+              <?php
+              echo "<li class=\"list-group-item d-flex justify-content-between lh-condensed\">
                 <div>
-                  <h6 class="my-0">Documentação</h6>
-                  <small class="text-muted">Clique no botão ao lado para obter mais informações sobre os documentos PENDENTES</small>
+                  <h6 class=\"my-0\">Documentação</h6>
+                  <small class=\"text-muted\">Clique no botão ao lado para obter mais informações sobre os documentos PENDENTES</small>
 
                 </div>
-                <div class="py-1">
-                      <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalDocumentacao">Detalhes</button>
+                <div class=\"py-1\">
+                      <button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\"#modalDocumentacao\">Detalhes</button>
                   </div>
 
-                <!-- <span class="text-muted">R$8</span> -->
-              </li>
+                <!-- <span class=\"text-muted\">R$8</span> -->
+              </li>";
+              ?>
+
+
+
+              <?php
+              echo "<div class=\"modal fade\" id=\"modalMensalidade\" role=\"dialog\">
+            <div class=\"modal-dialog modal-lg\">
+              <div class=\"modal-content\">
+                <div class=\"modal-header\">
+                  <h4 class=\"modal-title\"> Mensalidades</h4>
+                  <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>
+                </div>
+                <div class=\"modal-body\">
+                    <div class=\"col-md-12 order-md-2 mb-4\">
+                          <ul class=\"list-group mb-3\">
+                            <li class=\"list-group-item d-flex justify-content-between lh-condensed\">
+                                <div>
+                                  <h6 style=\"margin-left:30px;\" class=\"my-0\">Janeiro</h6>
+                                  <small style=\"margin-left:30px;\" class=\"text-muted\">Essa parcela foi liquidada na data 05/01/19 no valor de R$ 1.800</small>
+                                </div>
+                                <div class=\"py-1\">
+                                      <button type=\"button\" class=\"btn btn-success btn-sm\">LIQUIDADO</button>
+                                  </div>
+
+                                <!-- <span class=\"text-muted\">R$8</span> -->
+                              </li>
+                          <li class=\"list-group-item d-flex justify-content-between lh-condensed\">
+                              <div>
+                                  <input style=\"margin-left:1px; margin-top:10px;\" type=\"checkbox\" class=\"form-check-input\" id=\"exampleCheck1\">
+                                  <h6 style=\"margin-left:30px;\" class=\"my-0\">Fevereiro</h6>
+                                  <small style=\"margin-left:30px;\" class=\"text-muted\">Essa parcela está vencida desde a data 05/02/19 no valor de R$ 1.800</small>
+                                </div>
+                            <div>
+                               <div class= \"py-1\">
+                                  <button type=\"button\" class=\"btn btn-danger btn-sm\">EM ATRASO</button>
+                               </div>
+
+                            </div>
+
+                          </li>
+                          <li class=\"list-group-item d-flex justify-content-between lh-condensed\">
+                              <div>
+                                <input style=\"margin-left:1px; margin-top:10px;\" type=\"checkbox\" class=\"form-check-input\" id=\"exampleCheck1\">
+                                <h6 style=\"margin-left:30px;\" class=\"my-0\">Março</h6>
+                                <small style=\"margin-left:30px;\" class=\"text-muted\">Essa parcela está vencida desde a data 05/03/19 no valor de R$ 1.800</small>
+                              </div>
+                              <div>
+                                 <div class= \"py-1\">
+                                    <button type=\"button\" class=\"btn btn-danger btn-sm\">EM ATRASO</button>
+                                 </div>
+
+                              </div>
+
+                            </li>
+                          <br>
+                          <li class=\"list-group-item d-flex justify-content-between\">
+                            <span class=\"py-1\">Total (BRL)</span>
+                            <span class=\"py-1\">R$ 3.600 </span>
+                          </li>
+                        </div>
+                </div>
+                <div class=\"modal-footer\">
+                  <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Pagar</button>
+                  <button type=\"button\" class=\"btn btn-light\" data-dismiss=\"modal\">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>";
+              ?>
+
+
             <br>
             <li class="list-group-item d-flex justify-content-between">
               <div>
@@ -111,69 +185,69 @@
 
         </div>
         <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Large Modal</button> -->
-        <div class="modal fade" id="modalMensalidade" role="dialog">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title"> Mensalidades</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="col-md-12 order-md-2 mb-4">
-                          <ul class="list-group mb-3">
-                            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>
-                                  <h6 style="margin-left:30px;" class="my-0">Janeiro</h6>
-                                  <small style="margin-left:30px;" class="text-muted">Essa parcela foi liquidada na data 05/01/19 no valor de R$ 1.800</small>
-                                </div>
-                                <div class="py-1">
-                                      <button type="button" class="btn btn-success btn-sm">LIQUIDADO</button>
-                                  </div>
-
-                                <!-- <span class="text-muted">R$8</span> -->
-                              </li>
-                          <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <input style="margin-left:1px; margin-top:10px;" type="checkbox" class="form-check-input" id="exampleCheck1">
-                                  <h6 style="margin-left:30px;" class="my-0">Fevereiro</h6>
-                                  <small style="margin-left:30px;" class="text-muted">Essa parcela está vencida desde a data 05/02/19 no valor de R$ 1.800</small>
-                                </div>
-                            <div>
-                               <div class= "py-1">
-                                  <button type="button" class="btn btn-danger btn-sm">EM ATRASO</button>
-                               </div>
-
-                            </div>
-
-                          </li>
-                          <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                <input style="margin-left:1px; margin-top:10px;" type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <h6 style="margin-left:30px;" class="my-0">Março</h6>
-                                <small style="margin-left:30px;" class="text-muted">Essa parcela está vencida desde a data 05/03/19 no valor de R$ 1.800</small>
-                              </div>
-                              <div>
-                                 <div class= "py-1">
-                                    <button type="button" class="btn btn-danger btn-sm">EM ATRASO</button>
-                                 </div>
-
-                              </div>
-
-                            </li>
-                          <br>
-                          <li class="list-group-item d-flex justify-content-between">
-                            <span class="py-1">Total (BRL)</span>
-                            <span class="py-1">R$ 3.600 </span>
-                          </li>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Pagar</button>
-                  <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
-                </div>
-              </div>
-            </div>
-          </div>
+<!--        <div class="modal fade" id="modalMensalidade" role="dialog">-->
+<!--            <div class="modal-dialog modal-lg">-->
+<!--              <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                  <h4 class="modal-title"> Mensalidades</h4>-->
+<!--                  <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <div class="col-md-12 order-md-2 mb-4">-->
+<!--                          <ul class="list-group mb-3">-->
+<!--                            <li class="list-group-item d-flex justify-content-between lh-condensed">-->
+<!--                                <div>-->
+<!--                                  <h6 style="margin-left:30px;" class="my-0">Janeiro</h6>-->
+<!--                                  <small style="margin-left:30px;" class="text-muted">Essa parcela foi liquidada na data 05/01/19 no valor de R$ 1.800</small>-->
+<!--                                </div>-->
+<!--                                <div class="py-1">-->
+<!--                                      <button type="button" class="btn btn-success btn-sm">LIQUIDADO</button>-->
+<!--                                  </div>-->
+<!---->
+<!--                                <!-- <span class="text-muted">R$8</span> -->-->
+<!--                              </li>-->
+<!--                          <li class="list-group-item d-flex justify-content-between lh-condensed">-->
+<!--                              <div>-->
+<!--                                  <input style="margin-left:1px; margin-top:10px;" type="checkbox" class="form-check-input" id="exampleCheck1">-->
+<!--                                  <h6 style="margin-left:30px;" class="my-0">Fevereiro</h6>-->
+<!--                                  <small style="margin-left:30px;" class="text-muted">Essa parcela está vencida desde a data 05/02/19 no valor de R$ 1.800</small>-->
+<!--                                </div>-->
+<!--                            <div>-->
+<!--                               <div class= "py-1">-->
+<!--                                  <button type="button" class="btn btn-danger btn-sm">EM ATRASO</button>-->
+<!--                               </div>-->
+<!---->
+<!--                            </div>-->
+<!---->
+<!--                          </li>-->
+<!--                          <li class="list-group-item d-flex justify-content-between lh-condensed">-->
+<!--                              <div>-->
+<!--                                <input style="margin-left:1px; margin-top:10px;" type="checkbox" class="form-check-input" id="exampleCheck1">-->
+<!--                                <h6 style="margin-left:30px;" class="my-0">Março</h6>-->
+<!--                                <small style="margin-left:30px;" class="text-muted">Essa parcela está vencida desde a data 05/03/19 no valor de R$ 1.800</small>-->
+<!--                              </div>-->
+<!--                              <div>-->
+<!--                                 <div class= "py-1">-->
+<!--                                    <button type="button" class="btn btn-danger btn-sm">EM ATRASO</button>-->
+<!--                                 </div>-->
+<!---->
+<!--                              </div>-->
+<!---->
+<!--                            </li>-->
+<!--                          <br>-->
+<!--                          <li class="list-group-item d-flex justify-content-between">-->
+<!--                            <span class="py-1">Total (BRL)</span>-->
+<!--                            <span class="py-1">R$ 3.600 </span>-->
+<!--                          </li>-->
+<!--                        </div>-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                  <button type="button" class="btn btn-primary" data-dismiss="modal">Pagar</button>-->
+<!--                  <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
           <div class="modal fade" id="modalTaxas" role="dialog">
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">
