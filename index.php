@@ -37,17 +37,17 @@
         $comprovante = $row_aluno['comprovante'];
     }
 
-//    MENSALIDADES
+//    MENSALIDADES DADOS GERAIS
     $result_mensalidade = "SELECT * FROM mensalidade WHERE matricula_aluno = 201820000 "; // Pega o Banco
     $resultado_mensalidade = mysqli_query($conn, $result_mensalidade);
 
     while($row_mensalidade = mysqli_fetch_assoc($resultado_mensalidade)){
-        $descricao = $row_mensalidade['descricao'];
+        $descricao_mensalidade = $row_mensalidade['descricao'];
         $valor = $row_mensalidade['valor'];
         $status = $row_mensalidade['status'];
     }
 
-    //    MENSALIDADES
+    //    MENSALIDADES COM ID = 1
     $result_mensalidade = "SELECT * FROM mensalidade WHERE idMensalidade = 1 "; // Pega o Banco
     $resultado_mensalidade = mysqli_query($conn, $result_mensalidade);
 
@@ -55,7 +55,7 @@
         $nome_mensalidade_1 = $row_mensalidade['nome'];
     }
 
-//    MENSALIDADES
+//    MENSALIDADES COM ID = 2
     $result_mensalidade = "SELECT * FROM mensalidade WHERE idMensalidade = 2 "; // Pega o Banco
     $resultado_mensalidade = mysqli_query($conn, $result_mensalidade);
 
@@ -64,15 +64,46 @@
     }
 
 
-    //    MENSALIDADES
+    //    MENSALIDADES COM ID = 3
     $result_mensalidade = "SELECT * FROM mensalidade WHERE idMensalidade = 3 "; // Pega o Banco
     $resultado_mensalidade = mysqli_query($conn, $result_mensalidade);
 
     while($row_mensalidade = mysqli_fetch_assoc($resultado_mensalidade)){
         $nome_mensalidade_3 = $row_mensalidade['nome'];
     }
-
     $valorTotal = $valor *3;
+
+
+
+    //    TAXAS DADOS COM ID = 1
+    $result_taxas = "SELECT * FROM taxas WHERE idTaxas = 1 "; // Pega o Banco
+    $resultado_taxas = mysqli_query($conn, $result_taxas);
+
+    while($row_taxas = mysqli_fetch_assoc($resultado_taxas)){
+        $nome_taxa_1 = $row_taxas['nome'];
+        $descricao = $row_taxas['descricao'];
+        $status = $row_taxas['status'];
+    }
+
+    //    TAXAS DADOS COM ID = 2
+    $result_taxas = "SELECT * FROM taxas WHERE idTaxas = 2 "; // Pega o Banco
+    $resultado_taxas = mysqli_query($conn, $result_taxas);
+
+    while($row_taxas = mysqli_fetch_assoc($resultado_taxas)){
+        $nome_taxa_2 = $row_taxas['nome'];
+        $descricao = $row_taxas['descricao'];
+        $status = $row_taxas['status'];
+    }
+
+    //    TAXAS DADOS COM ID = 3
+    $result_taxas = "SELECT * FROM taxas WHERE idTaxas = 3 "; // Pega o Banco
+    $resultado_taxas = mysqli_query($conn, $result_taxas);
+
+    while($row_taxas = mysqli_fetch_assoc($resultado_taxas)){
+        $nome_taxa_3 = $row_taxas['nome'];
+        $descricao = $row_taxas['descricao'];
+        $status = $row_taxas['status'];
+    }
     ?>
 <!--   FIM DOS DADOS DO ALUNO (DOCUMENTAÇÃO-->
 
@@ -83,13 +114,13 @@
         <p class="lead">Esta é a tela de Check-List, você poderá ver as suas documentações pendentes e liquidadas. <br>Abaixo está as cores para se orientar:</p>
         <div style="margin-right: 0px; margin-left: 0px;" class="row col-md-12">
           <div class="col-md-4">
-            <button style="font-size:14px;" type="button" class="btn btn-success">✅ Em Atraso (Não tranca Rematricula)</button>
+            <button style="font-size:14px;" type="button" class="btn btn-success">✅ Liquidado ( Não deve nada )</button>
           </div>
           <div class="col-md-4">
-            <button style="font-size:14px;" type="button" class="btn btn-warning">⚠ Em Atraso (Não tranca Rematricula)</button>
+            <button style="font-size:14px;" type="button" class="btn btn-warning">⚠ Em Aberto (Não tranca Rematricula)</button>
           </div>
           <div class="col-md-4">
-            <button style="font-size:14px;" type="button" class="btn btn-danger">Em Atraso ( Rematricula está trancada)</button>
+            <button style="font-size:14px;" type="button" class="btn btn-danger">Em Atraso (Rematricula está trancada)</button>
           </div>
         </div>
       </div>
@@ -123,7 +154,7 @@
             <li class="list-group-item d-flex justify-content-between lh-condensed">
                 <div>
                   <h6 class="my-0">Documentação</h6>
-                  <small class="text-muted">Clique no botão ao lado para obter mais informações sobre os documentos PENDENTES</small>
+                  <small class="text-muted">Clique no botão ao lado para obter mais informações sobre a documentação ENVIADA</small>
 
                 </div>
                 <div class="py-1">
@@ -160,7 +191,7 @@
                                 <div>
                                   <input style="margin-left:1px; margin-top:10px;" type="checkbox" class="form-check-input" id="exampleCheck1">
                                   <h6 style="margin-left:30px;" class="my-0"> <?php echo $nome_mensalidade_1 ?> </h6>
-                                  <small style="margin-left:30px;" class="text-muted"> <?php echo $descricao?> </small>
+                                  <small style="margin-left:30px;" class="text-muted"> <?php echo $descricao_mensalidade?> </small>
                                 </div>
                                 <div class="py-1">
                                     <button type="button" class="btn btn-danger btn-sm"> <?php echo $status ?></button>
@@ -170,7 +201,7 @@
                               <div>
                                   <input style="margin-left:1px; margin-top:10px;" type="checkbox" class="form-check-input" id="exampleCheck1">
                                   <h6 style="margin-left:30px;" class="my-0"><?php echo $nome_mensalidade_2 ?></h6>
-                                  <small style="margin-left:30px;" class="text-muted"><?php echo $descricao?></small>
+                                  <small style="margin-left:30px;" class="text-muted"><?php echo $descricao_mensalidade?></small>
                                 </div>
                             <div>
                                <div class= "py-1">
@@ -184,7 +215,7 @@
                               <div>
                                 <input style="margin-left:1px; margin-top:10px;" type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <h6 style="margin-left:30px;" class="my-0"><?php echo $nome_mensalidade_3 ?></h6>
-                                <small style="margin-left:30px;" class="text-muted"><?php echo $descricao?></small>
+                                <small style="margin-left:30px;" class="text-muted"><?php echo $descricao_mensalidade?></small>
                               </div>
                               <div>
                                  <div class= "py-1">
@@ -202,7 +233,7 @@
                         </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Pagar</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='loading'">Pagar</button>
                   <button type="button" class="btn btn-light" data-dismiss="modal">Fechar</button>
                 </div>
               </div>
@@ -221,11 +252,11 @@
                               <li class="list-group-item d-flex justify-content-between lh-condensed">
                                   <div>
                                     <input style="margin-left:1px; margin-top:10px;" type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <h6 style="margin-left:30px;" class="my-0">Biblioteca</h6>
-                                    <small style="margin-left:30px;" class="text-muted">Essa taxa está atrasada desde do dia  05/01/19 no valor de R$ 180.00</small>
+                                    <h6 style="margin-left:30px;" class="my-0"> <?php echo $nome_taxa_1 ?> </h6>
+                                    <small style="margin-left:30px;" class="text-muted"> <?php echo $descricao ?> </small>
                                   </div>
                                   <div class="py-1">
-                                        <button type="button" class="btn btn-danger btn-sm">EM ATRASO</button>
+                                        <button type="button" class="btn btn-danger btn-sm"> <?php echo $status ?> </button>
                                     </div>
 
                                   <!-- <span class="text-muted">R$8</span> -->
@@ -233,12 +264,12 @@
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>
                                     <input style="margin-left:1px; margin-top:10px;" type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <h6 style="margin-left:30px;" class="my-0">Estacionamento</h6>
-                                    <small style="margin-left:30px;" class="text-muted">Essa taxa está atrasada desde do dia  05/01/19 no valor de R$ 180.00</small>
+                                    <h6 style="margin-left:30px;" class="my-0"><?php echo $nome_taxa_2 ?></h6>
+                                    <small style="margin-left:30px;" class="text-muted"><?php echo $descricao ?></small>
                                   </div>
                               <div>
                                  <div class= "py-1">
-                                    <button type="button" class="btn btn-danger btn-sm">EM ATRASO</button>
+                                    <button type="button" class="btn btn-danger btn-sm"><?php echo $status ?></button>
                                  </div>
 
                               </div>
@@ -247,12 +278,12 @@
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>
                                   <input style="margin-left:1px; margin-top:10px;" type="checkbox" class="form-check-input" id="exampleCheck1">
-                                  <h6 style="margin-left:30px;" class="my-0">Taxa de Rematricula</h6>
-                                  <small style="margin-left:30px;" class="text-muted">Essa taxa está atrasada desde do dia  05/01/19 no valor de R$ 180.00</small>
+                                  <h6 style="margin-left:30px;" class="my-0"><?php echo $nome_taxa_3 ?></h6>
+                                  <small style="margin-left:30px;" class="text-muted"><?php echo $descricao ?></small>
                                 </div>
                                 <div>
                                    <div class= "py-1">
-                                      <button type="button" class="btn btn-danger btn-sm">EM ATRASO</button>
+                                      <button type="button" class="btn btn-danger btn-sm"><?php echo $status ?></button>
                                    </div>
 
                                 </div>
