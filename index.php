@@ -145,7 +145,7 @@
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <div>
                 <h6 class="my-0">Taxas</h6>
-                <small class="text-muted">Clique no botão ao lado para obter mais informações sobre as taxar EM ATRASO</small>
+                <small class="text-muted">Clique no botão ao lado para obter mais informações sobre as taxas EM ATRASO</small>
               </div>
               <div class="py-1">
                   <button type="button" class="btn btn-warning btn-sm" data-target="#modalTaxas" data-toggle="modal">Detalhes</button>
